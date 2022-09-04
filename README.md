@@ -6,7 +6,7 @@ This is a simple API for authentication.
 ### ```ping```
 Test the API server.
 
-### ```signup```
+### ```user/signup```
 
 ```json
 {
@@ -17,7 +17,7 @@ Test the API server.
 }
 ```
 
-### ```login```
+### ```users/login```
 
 ```json
 {
@@ -26,7 +26,7 @@ Test the API server.
 }
 ```
 
-### ```activate```
+### ```users/activate```
 
 ```json
 {
@@ -34,7 +34,7 @@ Test the API server.
     "code" : ""
 }
 ```
-### ```forgot```
+### ```users/forgot```
 
 ```json
 {
@@ -42,7 +42,7 @@ Test the API server.
 }
 ```
 
-### ```reset```
+### ```users/reset```
 
 ```json
 {
