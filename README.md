@@ -11,6 +11,7 @@ Test the API server.
 ```json
 {
     "email" : "",
+    "username" : "",
     "password" : "",
     "confirmPassword" : ""
 }
@@ -20,7 +21,7 @@ Test the API server.
 
 ```json
 {
-    "email" : "",
+    "username" : "",
     "password" : ""
 }
 ```
@@ -33,22 +34,11 @@ Test the API server.
     "code" : ""
 }
 ```
-
-### ```signup```
-
-```json
-{
-    "email" : "",
-    "password" : "",
-    "confirmPassword" : ""
-}
-```
-
 ### ```forgot```
 
 ```json
 {
-    "email" : ""
+    "username" : ""
 }
 ```
 

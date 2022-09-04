@@ -1,7 +1,7 @@
 require('dotenv').config();
 const nodeMailer = require('nodemailer');
 
-async function sendMail(email, code) {
+async function sendMail(email, code, reset = false) {
   try {
     const smtpEndpoint = 'smtp.sendgrid.net';
     const port = 465;
@@ -10,7 +10,8 @@ async function sendMail(email, code) {
     var toAddress = email;
     const smtpUsername = 'apikey';
     const smtpPassword = process.env.SG_APIKEY;
-    const subject = 'Verify your Email';
+    let subject = 'Verify your Email';
+    if (reset) subject = 'Reset your password';
 
     var bodyHTML = `<!DOCTYPE html>
         <html><head></head>

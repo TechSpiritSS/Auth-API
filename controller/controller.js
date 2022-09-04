@@ -201,7 +201,7 @@ exports.forgotPass = async (req, res) => {
     }
 
     let code = Math.floor(100000 + Math.random() * 900000);
-    let response = await sendMail(user.email, code);
+    let response = await sendMail(user.email, code, true);
 
     if (response.error) {
       return res.status(500).json({
