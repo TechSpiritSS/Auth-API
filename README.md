@@ -3,6 +3,9 @@
 
 This is a simple API for authentication.
 
+### ```ping```
+Test the API server.
+
 ### ```signup```
 
 ```json

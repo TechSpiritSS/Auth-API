@@ -6,6 +6,7 @@ const User = require('../models/user');
 
 const userSchema = joi.object().keys({
   email: joi.string().email({ minDomainSegments: 2 }),
+  username: joi.string().min(3).max(30).required(),
   password: joi.string().required().min(4),
   confirmPassword: joi.string().valid(joi.ref('password')).required(),
 });
@@ -29,6 +30,17 @@ exports.signUp = async (req, res) => {
       return res.json({
         error: true,
         message: 'Email already in use',
+      });
+    }
+
+    user = await User.findOne({
+      username: result.value.username,
+    });
+
+    if (user) {
+      return res.json({
+        error: true,
+        message: 'Username already in use',
       });
     }
 
@@ -72,15 +84,15 @@ exports.signUp = async (req, res) => {
 
 exports.login = async (req, res) => {
   try {
-    const { email, password } = req.body;
-    if (!email || !password) {
+    const { username, password } = req.body;
+    if (!password || !username) {
       return res.status(400).json({
         error: true,
-        message: 'Please enter email and password',
+        message: 'Please enter username and password',
       });
     }
 
-    const user = await User.findOne({ email: email });
+    const user = await User.findOne({ username: username });
 
     if (!user) {
       return res.status(400).json({
@@ -171,15 +183,15 @@ exports.activate = async (req, res) => {
 
 exports.forgotPass = async (req, res) => {
   try {
-    const { email } = req.body;
-    if (!email) {
+    const { username } = req.body;
+    if (!username) {
       return res.status(400).json({
         error: true,
-        message: 'Please enter email',
+        message: 'Please enter username',
       });
     }
 
-    const user = await User.findOne({ email: email });
+    const user = await User.findOne({ username: username });
 
     if (!user) {
       return res.json({
