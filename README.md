@@ -1,5 +1,5 @@
 # Auth API
-## Sidharth Sethi
+## Sidharth Sethi and Saurav
 ### Deployled Link - [Heroku](https://tech-auth-api.herokuapp.com/ping)
 This is a simple API for authentication.
 
